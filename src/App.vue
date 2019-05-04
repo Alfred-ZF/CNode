@@ -4,7 +4,7 @@
     <div class="main">
       <PostList/>
     </div>
-    <PostList/>
+    
   </div>
 </template>
 

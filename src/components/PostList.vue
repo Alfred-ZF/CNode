@@ -7,33 +7,32 @@
       <ul>
         <li>
           <div class="toobar">
-            <span>全部</span>
-            <span>精华</span>
-            <span>分享</span>
-            <span>问答</span>
-            <span>招聘</span>
-            <span>客户端测试</span>
+            <span class="active" v-on:click="changeStatus">全部</span>
+            <span v-on:click="changeStatus">精华</span>
+            <span v-on:click="changeStatus">分享</span>
+            <span v-on:click="changeStatus">问答</span>
+            <span v-on:click="changeStatus">招聘</span>
+            <span v-on:click="changeStatus">客户端测试</span>
           </div>
         </li>
         <li v-for="post in posts">
           <!-- 头像 -->
-          <img :src="post.author.avatar_url" alt="">
+          <img :src="post.author.avatar_url" alt>
           <!-- 回复/点击 -->
           <span class="allcount">
-            <span class="reply_count">{{post.reply_count}}</span>/{{post.visit_count}}
+            <span class="reply_count">{{post.reply_count}}</span>
+            /{{post.visit_count}}
           </span>
           <!-- 帖子的分类 -->
-          <span :class="[{put_good:(post.good == true),put_top:(post.top == true),'topiclist-tab':(post.good != true && post.top != true)}]">
-            <span>
-            {{post | tabFormatter}}
-            </span>
+          <span
+            :class="[{put_good:(post.good == true),put_top:(post.top == true),'topiclist-tab':(post.good != true && post.top != true)}]"
+          >
+            <span>{{post | tabFormatter}}</span>
           </span>
           <!-- 标题 -->
-          <span>{{post.title}}</span>
+          <span class="title">{{post.title}}</span>
           <!-- 最后回复时间 -->
-          <span class="last_reply">
-            {{post.last_reply_at | formatDate}}
-          </span>
+          <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
         </li>
       </ul>
     </div>
@@ -66,11 +65,14 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    changeStatus(e){
+      this.$(e.currentTarget).addClass('active').siblings().removeClass('active')
     }
   },
   beforeMount() {
     this.isLoading = true;
-      this.getData();
+    this.getData();
   }
 };
 </script>
@@ -94,6 +96,7 @@ ul {
   width: 100%;
   max-width: 1344px;
   margin: 0 auto;
+  
 }
 
 ul li:not(:first-child) {
@@ -105,6 +108,7 @@ ul li:not(:first-child) {
   background-color: white;
   color: #333;
   border-top: 1px solid #f0f0f0;
+
 }
 
 li:not(:first-child):hover {
@@ -116,7 +120,17 @@ li:last-child:hover {
 }
 
 li span {
+  height: 30px;
   line-height: 30px;
+}
+
+.title {
+  display: inline-block;
+  max-width: 650px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: top;
 }
 
 .allcount {
@@ -175,13 +189,25 @@ li span {
   font-size: 14px;
   color: #80bd01;
   line-height: 40px;
-  margin: 0 10px;
+  margin: 0 5px;
   cursor: pointer;
+  padding: 5px;
 }
 
-.toobar span:hover {
-  color: #9e78c0;
-}
+.toobar span.active{
+    background-color: #80bd01;
+    color: white;
+    border-radius: 5px;
+  } 
+
+  .toobar span:hover {
+    color: #9e78c0;
+  }
+
+  .toobar span.active:hover {
+    color: white;
+  }
+
 
 a {
   text-decoration: none;
@@ -193,9 +219,8 @@ a:hover {
 }
 
 .loading {
-  
   text-align: center;
-  
+
   padding-top: 10px;
 }
 </style>

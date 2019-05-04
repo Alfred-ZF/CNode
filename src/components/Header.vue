@@ -82,4 +82,10 @@ export default {
   line-height: 50px;
   /* margin: -2px 0 0 0; */
 }
+
+
+.header .parent .container ul li a:hover{
+  color:white;
+  font-weight: bold;
+}
 </style>

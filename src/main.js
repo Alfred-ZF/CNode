@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Axios from 'axios'
+import jQuery from 'jquery'
 
 Vue.prototype.$http = Axios;
+Vue.prototype.$ = jQuery
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -41,11 +43,11 @@ Vue.filter('formatDate', function (str) {
 )
 
 Vue.filter('tabFormatter', function (post) {
-  if(post.tab == 'share'){
+  if(post.tab == 'share' && post.top == false && post.good == false){
     return '分享'
-  }else if(post.tab == "ask"){
+  }else if(post.tab == "ask" && post.top == false && post.good == false){
     return '问答'
-  }else if(post.tab == 'job'){
+  }else if(post.tab == 'job' && post.top == false && post.good == false){
     return "招聘"
   }else if(post.top == true){
     return "置顶"
