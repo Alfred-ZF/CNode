@@ -1,56 +1,54 @@
 <template>
   <div id="app">
-    <Header/> <br>
+    <Header/>
+    <br>
     <div class="main">
-      <PostList/>
+      <router-view name="main"></router-view>
     </div>
-    
   </div>
 </template>
 
 <script>
-  import Header from './components/Header'
-  import PostList from './components/PostList'
+import Header from "./components/Header";
+import PostList from "./components/PostList";
 
 export default {
-  name: 'App',
-  components:{
+  name: "App",
+  components: {
     Header,
     PostList
   }
-}
+};
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
-*::after{
+*::after {
   box-sizing: border-box;
 }
 
-*::before{
+*::before {
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-li{
+li {
   list-style: none;
 }
 
-body{
-  background:#e1e1e1;
+body {
+  background: #e1e1e1;
 }
 
-.main{
+.main {
   width: 80%;
-  margin:0 auto;
+  margin: 0 auto;
 }
-
 </style>

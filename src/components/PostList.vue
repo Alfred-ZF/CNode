@@ -30,7 +30,10 @@
             <span>{{post | tabFormatter}}</span>
           </span>
           <!-- 标题 -->
-          <span class="title">{{post.title}}</span>
+          <router-link :to="{name:'post_content',params:{id:post.id}}">
+            <span class="title">{{post.title}}</span>
+          </router-link>
+          
           <!-- 最后回复时间 -->
           <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
         </li>
@@ -50,8 +53,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$http
-        .get("https://cnodejs.org/api/v1/topics", {
+      this.$http.get("https://cnodejs.org/api/v1/topics", {
           params: {
             limit: 20,
             page: 1
@@ -60,13 +62,13 @@ export default {
         .then(res => {
           this.isLoading = false;
           this.posts = res.data.data;
-          console.log(this.posts);
         })
         .catch(err => {
           console.log(err);
         });
     },
     changeStatus(e){
+      console.log(e.currentTarget);
       this.$(e.currentTarget).addClass('active').siblings().removeClass('active')
     }
   },
@@ -173,7 +175,7 @@ li span {
 .last_reply {
   text-align: right;
   min-width: 50px;
-  display: inline-block;
+  
   white-space: nowrap;
   float: right;
   color: #778087;
