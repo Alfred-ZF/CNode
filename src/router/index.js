@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import PostList from '../components/PostList'
 import Article from '../components/Article'
-// import UserInfo from '../components/userInfo'
+import UserInfo from '../components/UserInfo'
 
 Vue.use(Router)
 
@@ -22,12 +22,12 @@ export default new Router({
         main:Article
       }
     },
-    // {
-    //   name:'user_info',
-    //   path:'/userinfo/:name',
-    //   components:{
-    //     main:UserInfo
-    //   }
-    // }
+    {
+      name:'user_info',
+      path:'/user/:name',
+      components:{
+        main:UserInfo
+      }
+    }
   ]
 })

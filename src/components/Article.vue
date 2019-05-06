@@ -8,11 +8,15 @@
         <div class="topic_title"> <h2>{{posts.title}}</h2> </div>
         <ul>
           <li>• 发布于{{posts.create_at | formatDate}}</li>
-          <li>• 作者:{{posts.author.loginname}}</li>
+          <li>• 作者:
+            <router-link :to="{name:'user_info',params:{name:posts.author.loginname,id:posts.id}}">
+            {{posts.author.loginname}}
+            </router-link>
+            </li>
           <li>• {{posts.visit_count}}次分享</li>
           <li>• 来自:{{posts | tabFormatter}}</li>
         </ul>
-        <div v-html="posts.content" class="topic_content  markdown-body"></div>
+        <div v-html="posts.content" class="topic_content markdown-body"></div>
       </div>
       <div id="reply" class="markdown-body">
         <div class="topbar"><span>{{posts.replies.length}} 回复</span></div>
@@ -59,7 +63,7 @@ export default {
         .then(res => {
           this.isLoading = false;
           this.posts = res.data.data;
-          console.log(this.posts.content);
+          // console.log(this.posts.content);
         })
         .catch(err => {
           console.log(err);
