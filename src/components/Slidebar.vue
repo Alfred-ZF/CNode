@@ -1,5 +1,6 @@
 <template>
   <div class="authorinfo">
+    
     <div class="authorsumary">
       <div class="topbar">作者</div>
       <router-link :to="{name:'user_info',params:{name:userInfo.loginname}}">
@@ -7,8 +8,8 @@
         <span class="userName">{{userInfo.loginname}}</span>
       </router-link>
       <p class="score">积分：{{userInfo.score}}</p>
-
     </div>
+
     <div class="recent_topics">
       <div class="topbar">作者最近主题</div>
       <ul>
@@ -20,6 +21,7 @@
         </li>
       </ul>
     </div>
+
     <div class="recent_replies">
       <div class="topbar">作者最近回复</div>
       <ul>
@@ -32,6 +34,7 @@
       </ul>
     </div class="recent_replies">
   </div>
+
 </template>
 
 <script>
@@ -148,4 +151,10 @@
   .authorsumary .topbar {
     margin-top: 0px;
   }
+
+  @media screen and (max-width: 979px){
+  .authorinfo{
+    display: none;
+  }
+}
 </style>

@@ -87,4 +87,18 @@ export default {
   color:white;
   font-weight: bold;
 }
+
+@media (max-width: 979px){
+  .header{
+    height: 100px;
+  }
+  .header .parent .container img{
+      margin-left: 20px;
+  }
+  .header .parent .container ul {
+    margin-right: 0;
+    padding-left: 10px 10px 0 10px;
+    float: none;
+  }
+}
 </style>

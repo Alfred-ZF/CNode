@@ -189,4 +189,10 @@ export default {
 .markdown-text img {
   width: 92% !important;
 }
+
+@media screen and (max-width: 980px){
+  .article:not(:first-child){
+    margin: 10px 10px 10px;
+  }
+}
 </style>

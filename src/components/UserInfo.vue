@@ -126,4 +126,10 @@ export default {
   color: #094e99;
   text-decoration: none;
 }
+
+@media screen and (max-width: 980px){
+  .userInfomation{
+    margin: 10px 10px 10px;
+  }
+}
 </style>
