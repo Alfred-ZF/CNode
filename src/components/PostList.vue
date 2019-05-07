@@ -16,23 +16,25 @@
           </div>
         </li>
         <li v-for="post in posts">
+
           <!-- 头像 -->
           <router-link :to="{name:'user_info',params:{name:post.author.loginname,id:posts.id}}">
             <img :src="post.author.avatar_url" alt>
           </router-link>
+
           <!-- 回复/点击 -->
           <span class="allcount">
             <span class="reply_count">{{post.reply_count}}</span>
             /{{post.visit_count}}
           </span>
+
           <!-- 帖子的分类 -->
-          <span
-            :class="[{put_good:(post.good == true),put_top:(post.top == true),'topiclist-tab':(post.good != true && post.top != true)}]"
-          >
+          <span :class="[{put_good:(post.good == true),put_top:(post.top == true),'topiclist-tab':(post.good != true && post.top != true)}]">
             <span>{{post | tabFormatter}}</span>
           </span>
+
           <!-- 标题 -->
-          <router-link :to="{name:'post_content',params:{id:post.id}}">
+          <router-link :to="{name:'post_content',params:{id:post.id,name:post.author.loginname}}">
             <span class="title">{{post.title}}</span>
           </router-link>
           

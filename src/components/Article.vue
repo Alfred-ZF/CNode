@@ -63,7 +63,6 @@ export default {
         .then(res => {
           this.isLoading = false;
           this.posts = res.data.data;
-          // console.log(this.posts.content);
         })
         .catch(err => {
           console.log(err);
@@ -73,6 +72,11 @@ export default {
   beforeMount() {
     this.isLoading = true;
     this.getData();
+  },
+  watch:{//监控页面的路由变化，如果路由仍旧指向当前页面类似的路由地址，则通过 watch 监控并重新发送请求
+    '$route'(to,from){
+      this.getData()
+    }
   }
 };
 </script>

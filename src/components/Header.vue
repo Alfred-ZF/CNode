@@ -2,7 +2,9 @@
   <div class="header">
     <div class="parent">
       <div class="container clearfix">
+      <router-link :to="{name:'root'}">
         <img src="../assets/cnodejs_light.svg" alt>
+      </router-link>
         <ul>
           <li>
             <a href="#">首页</a>
@@ -49,7 +51,6 @@ export default {
 
 .header .parent .container img {
   max-width: 120px;
-  /* margin-left: 50px; */
   margin-top: 3px;
 }
 .clearfix::after {
@@ -70,7 +71,6 @@ export default {
   display: inline-block;
   height: 50px;
   padding: 0px 15px;
-  /* line-height:50px; */
   margin:0 -5px;
 }
 
@@ -80,7 +80,6 @@ export default {
   color: #ccc;
   height: 50px;
   line-height: 50px;
-  /* margin: -2px 0 0 0; */
 }
 
 

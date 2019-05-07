@@ -1,8 +1,10 @@
 <template>
   <div class="UserInfo">
+
     <div class="loading" v-if="isLoading">
       <img src="../assets/loading.gif" alt>
     </div>
+
     <div class="userInfomation" v-else>
       <section>
         <div class="user">
@@ -11,30 +13,32 @@
             <span class="userName">{{userData.loginname}}</span>
           </router-link>
         </div>
-
         <p>积分：{{userData.score}}</p>
         <P>注册于：{{userData.create_at | formatDate}}</P>
       </section>
+
       <div class="replies">
         <P>最近回复的主题：</P>
         <ul>
           <li v-for="(reply,index) in userData.recent_replies">
-            <router-link
-              :to="{name:'post_content',params:{id:reply.id}}"
-            >{{index+1}}.{{reply.title}}</router-link>
+            <router-link :to="{name:'post_content',params:{id:reply.id}}">
+              {{index+1}}.{{reply.title}}
+            </router-link>
           </li>
         </ul>
       </div>
+
       <div class="topics">
         <p>创建的主题：</p>
         <ul>
           <li v-for="(reply,index) in userData.recent_topics">
-            <router-link
-              :to="{name:'post_content',params:{id:reply.id}}"
-            >{{index+1}}.{{reply.title}}</router-link>
+            <router-link :to="{name:'post_content',params:{id:reply.id}}">
+              {{index+1}}.{{reply.title}}
+            </router-link>
           </li>
         </ul>
       </div>
+      
     </div>
   </div>
 </template>
